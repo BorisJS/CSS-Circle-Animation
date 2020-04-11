@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Animation</title>
+</head>
+
+<style>
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+}
+#Outside {
+width: 500px;
+height: 500px;
+border-radius: 100%;
+background-image: linear-gradient(#fb5dad 15%, #55fb9f, #55fb9f, #b97aff 85%);
+position: relative;
+animation-name: Rotating-animation;
+animation-duration: 2s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+z-index: 2;
+
+
+}
+#Outside::before{
+
+content: "";
+width: 500px;
+height: 500px;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+margin: 0 auto;
+background-image: linear-gradient(#fb5dad 5%, #55fb9f, #55fb9f, #b97aff 95%);
+border-radius: 100%;
+transform: scale(1);
+z-index: 1;
+filter: blur(40px);
+}
+
+#Inside
+{
+
+width: 450px;
+height: 450px;
+position: absolute;
+top: 25px;
+left: 0;
+right: 0;
+margin: 0 auto;
+border-radius: 100%;
+background-color: #000;
+z-index: 3;
+}
+
+#Outiside::after, 
+#Inside::after 
+{
+
+content: "";
+width: 450px;
+height: 450px;
+position: absolute;
+top: 25px;
+left: 0;
+right: 0;
+margin: 0 auto;
+background-color: #fff;
+border-radius: 100%;
+animation-name: Circle-animation ;
+animation-timing-function: ease;
+animation-duration: 2s;
+animation-iteration-count: infinite;
+z-index: 4;
+}
+
+#Inside::after {
+
+top: 0px;
+animation-delay: -1s;
+}
+
+@keyframes Rotating-animation {
+
+from {
+
+transform: rotateZ(0deg);
+}
+
+to {
+transform: rotateZ( 360deg);
+}
+}
+
+@keyframes Circle-animation
+{
+
+0% {
+transform: scale(0);
+opacity: 0;
+}
+40% {
+transform: scale(0);
+opacity: 0.3;
+
+}
+100% {
+    transform: scale(1); 
+    opacity: 0;
+}
+}
+
+
+</style>
+
+<body>
+    
+
+<div id="Outside">
+
+<div id="Inside"></div>
+
+</div>
+
+
+
+</body>
+</html>
